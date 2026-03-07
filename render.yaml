@@ -2,7 +2,7 @@ services:
   - type: web
     name: trusan
     env: node
-    plan: starter
+    plan: free
     buildCommand: npm install
     startCommand: npm start
     healthCheckPath: /health
@@ -14,8 +14,4 @@ services:
       - key: ADMIN_EMAIL
         value: trusanaccademy@gmail.com
       - key: DATA_DIR
-        value: /var/data/trusan
-    disk:
-      name: trusan-data
-      mountPath: /var/data
-      sizeGB: 1
+        value: /tmp/trusan

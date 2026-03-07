@@ -76,7 +76,7 @@ Modern, responsive course landing website for IT training with:
 - `GET /health` - Health check
 
 ## Deployment on Render (Recommended)
-Use Render for production because leads are stored in a file and need persistent disk.
+For free setup, this project can run on Render Free tier.
 
 1. Push code to GitHub.
 2. In Render dashboard, click **New +** -> **Blueprint**.
@@ -84,10 +84,13 @@ Use Render for production because leads are stored in a file and need persistent
 4. Render reads `render.yaml` automatically.
 5. Confirm service creation and deploy.
 6. In Render service settings, verify:
-   - `DATA_DIR=/var/data/trusan`
-   - Persistent disk is attached (`/var/data`)
+   - `DATA_DIR=/tmp/trusan`
    - `ADMIN_EMAIL=trusanaccademy@gmail.com`
 7. Add real SMTP values if you want email alerts.
+
+Free-tier note:
+- `/tmp` storage is ephemeral. Leads may reset on restart/redeploy.
+- Upgrade later to paid disk + managed DB for durable lead storage.
 
 ## Deployment on Vercel
 Vercel config is included (`vercel.json`), but Vercel serverless file storage is ephemeral, so lead data is not reliable long-term with local JSON DB.

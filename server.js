@@ -175,9 +175,8 @@ function getTransporter() {
 }
 
 async function sendLeadEmail(lead) {
-  const transporter = getTransporter();
   const adminEmail = process.env.ADMIN_EMAIL || "trusanaccademy@gmail.com";
-  if (!transporter || !adminEmail) return;
+  if (!adminEmail) return;
 
   const html = `
     <h2>New Course Enquiry</h2>
@@ -190,12 +189,42 @@ async function sendLeadEmail(lead) {
     <p><strong>Created At:</strong> ${escapeHtml(lead.created_at)}</p>
   `;
 
-  await transporter.sendMail({
-    from: process.env.MAIL_FROM || process.env.SMTP_USER,
-    to: adminEmail,
-    subject: `New Lead: ${lead.interested_course}`,
-    html
-  });
+  const subject = `New Lead: ${lead.interested_course}`;
+  const transporter = getTransporter();
+
+  if (transporter) {
+    await transporter.sendMail({
+      from: process.env.MAIL_FROM || process.env.SMTP_USER,
+      to: adminEmail,
+      subject,
+      html
+    });
+    return;
+  }
+
+  const resendApiKey = String(process.env.RESEND_API_KEY || "").trim();
+  if (resendApiKey) {
+    const resendFrom =
+      String(process.env.RESEND_FROM || "").trim() || "onboarding@resend.dev";
+    const response = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${resendApiKey}`,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        from: resendFrom,
+        to: [adminEmail],
+        subject,
+        html
+      })
+    });
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error(`Resend API error ${response.status}: ${errorText}`);
+    }
+  }
 }
 
 function escapeHtml(value) {

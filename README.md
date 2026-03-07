@@ -86,11 +86,15 @@ For free setup, this project can run on Render Free tier.
 6. In Render service settings, verify:
    - `DATA_DIR=/tmp/trusan`
    - `ADMIN_EMAIL=trusanaccademy@gmail.com`
-7. Add real SMTP values if you want email alerts.
+7. For email alerts on Render Free, configure Resend API:
+   - `RESEND_API_KEY=<your_resend_api_key>`
+   - `RESEND_FROM=<verified_sender_email_or_domain>`
+   - Keep SMTP values empty on free tier.
 
 Free-tier note:
 - `/tmp` storage is ephemeral. Leads may reset on restart/redeploy.
 - Upgrade later to paid disk + managed DB for durable lead storage.
+- Render Free blocks common SMTP ports, so SMTP email may not work there.
 
 ## Deployment on Vercel
 Vercel config is included (`vercel.json`), but Vercel serverless file storage is ephemeral, so lead data is not reliable long-term with local JSON DB.

@@ -47,6 +47,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 
+app.get("/health", (req, res) => {
+  res.status(200).json({ ok: true });
+});
+
 app.get("/", (req, res) => {
   res.render("index", {
     title: "Master Job-Oriented IT Courses",
@@ -207,7 +211,9 @@ app.use((req, res) => {
   res.status(404).send("Page not found.");
 });
 
-startServer(DEFAULT_PORT);
+if (require.main === module) {
+  startServer(DEFAULT_PORT);
+}
 
 function startServer(port, retried = false) {
   const server = app.listen(port, () => {
@@ -227,3 +233,5 @@ function startServer(port, retried = false) {
     process.exit(1);
   });
 }
+
+module.exports = app;

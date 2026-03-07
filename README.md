@@ -18,6 +18,10 @@ Modern, responsive course landing website for IT training with:
 ## Project Structure
 ```text
 .
+|-- api/
+|   `-- index.js
+|-- vercel.json
+|-- render.yaml
 |-- server.js
 |-- src/
 |   |-- db.js
@@ -68,17 +72,33 @@ Modern, responsive course landing website for IT training with:
 - `POST /api/leads` - Lead submission API
 - `GET /admin/leads` - Admin dashboard
 - `GET /admin/leads.csv` - CSV export
-- `GET /syllabus/:course` - Download syllabus text file
+- `GET /syllabus/:course` - Download syllabus PDF
+- `GET /health` - Health check
 
-## Deployment (Quick)
-1. Push project to GitHub.
-2. Deploy on Render/Railway/VPS with:
-   - Build command: `npm install`
-   - Start command: `npm start`
-3. Set env variables from `.env.example`.
-4. Ensure persistent disk storage in production (to retain `data/leads.json`).
+## Deployment on Render (Recommended)
+Use Render for production because leads are stored in a file and need persistent disk.
+
+1. Push code to GitHub.
+2. In Render dashboard, click **New +** -> **Blueprint**.
+3. Connect your GitHub repo and select this project.
+4. Render reads `render.yaml` automatically.
+5. Confirm service creation and deploy.
+6. In Render service settings, verify:
+   - `DATA_DIR=/var/data/trusan`
+   - Persistent disk is attached (`/var/data`)
+   - `ADMIN_EMAIL=trusanaccademy@gmail.com`
+7. Add real SMTP values if you want email alerts.
+
+## Deployment on Vercel
+Vercel config is included (`vercel.json`), but Vercel serverless file storage is ephemeral, so lead data is not reliable long-term with local JSON DB.
+
+1. Import the GitHub repo into Vercel.
+2. Framework preset: **Other**.
+3. Deploy with default settings.
+4. If you use Vercel for production, move leads to managed DB first.
 
 ## Notes
 - Update WhatsApp number and contact email in:
   - `views/index.ejs`
 - For production, add authentication to `/admin/leads`.
+- To store leads on Render disk, app already supports `DATA_DIR` environment variable.

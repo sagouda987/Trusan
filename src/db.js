@@ -1,6 +1,8 @@
 const fs = require("fs");
 const path = require("path");
-const dataDir = path.join(__dirname, "..", "data");
+const dataDir = process.env.DATA_DIR
+  ? path.resolve(process.env.DATA_DIR)
+  : path.join(__dirname, "..", "data");
 const dbPath = path.join(dataDir, "leads.json");
 
 function initDb() {

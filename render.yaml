@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: trusan
+    env: node
+    plan: starter
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_VERSION
+        value: 20
+      - key: PORT
+        value: 10000
+      - key: ADMIN_EMAIL
+        value: trusanaccademy@gmail.com
+      - key: DATA_DIR
+        value: /var/data/trusan
+    disk:
+      name: trusan-data
+      mountPath: /var/data
+      sizeGB: 1

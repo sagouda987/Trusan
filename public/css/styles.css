@@ -194,14 +194,21 @@ h1 {
   font-size: 1.2rem;
   font-weight: 800;
   color: #0f172a;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
 }
 
 .old-price {
-  text-decoration: line-through;
   color: #64748b;
-  margin-right: 8px;
   font-size: 1rem;
   font-weight: 700;
+}
+
+.old-price del {
+  text-decoration-thickness: 2px;
+  text-decoration-color: #dc2626;
 }
 
 .free-price {

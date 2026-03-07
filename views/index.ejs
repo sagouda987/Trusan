@@ -91,7 +91,7 @@
               <div class="card-footer">
                 <span class="price">
                   <% if (course.oldPrice) { %>
-                  <span class="old-price"><%= course.oldPrice %></span>
+                  <span class="old-price"><del><%= course.oldPrice %></del></span>
                   <span class="free-price"><%= course.price %></span>
                   <% } else { %>
                   <%= course.price %>

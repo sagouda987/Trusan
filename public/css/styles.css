@@ -196,6 +196,20 @@ h1 {
   color: #0f172a;
 }
 
+.old-price {
+  text-decoration: line-through;
+  color: #64748b;
+  margin-right: 8px;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.free-price {
+  color: #15803d;
+  font-size: 1.2rem;
+  font-weight: 800;
+}
+
 .card-actions {
   display: grid;
   gap: 10px;

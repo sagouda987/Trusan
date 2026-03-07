@@ -89,7 +89,14 @@
               <h3><%= course.name %></h3>
               <p><%= course.description %></p>
               <div class="card-footer">
-                <span class="price"><%= course.price %></span>
+                <span class="price">
+                  <% if (course.oldPrice) { %>
+                  <span class="old-price"><%= course.oldPrice %></span>
+                  <span class="free-price"><%= course.price %></span>
+                  <% } else { %>
+                  <%= course.price %>
+                  <% } %>
+                </span>
                 <div class="card-actions">
                   <a class="btn btn-light" href="/syllabus/<%= course.id %>"
                     >Download Syllabus</a

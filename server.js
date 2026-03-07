@@ -13,7 +13,8 @@ const courses = [
   {
     id: "sql",
     name: "SQL",
-    price: "INR 200",
+    price: "Free",
+    oldPrice: "INR 200",
     description: "Beginner to advanced SQL for interviews and real projects.",
     syllabusFile: "SQL_Syllabus.pdf"
   },

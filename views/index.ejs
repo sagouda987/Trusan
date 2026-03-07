@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %> | IT Training</title>
+    <meta
+      name="description"
+      content="Master practical, job-oriented IT courses in SQL, Informatica Cloud, and dbt with real projects and mentor support."
+    />
+    <meta property="og:title" content="<%= title %>" />
+    <meta
+      property="og:description"
+      content="Practical IT courses for working professionals and job seekers."
+    />
+    <meta property="og:type" content="website" />
+    <link rel="canonical" href="/" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&family=Space+Grotesk:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <div class="top-banner">Limited Seats Available</div>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <div class="brand">Trusan IT Academy</div>
+        <nav class="nav-links">
+          <a href="#courses">Courses</a>
+          <a href="#testimonials">Testimonials</a>
+          <a href="#faq">FAQ</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <a
+          class="btn btn-outline"
+          href="https://wa.me/917681858880?text=Hi%2C%20I%20want%20to%20enquire%20about%20IT%20courses"
+          target="_blank"
+          rel="noopener noreferrer"
+          >WhatsApp</a
+        >
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-grid">
+          <div>
+            <p class="eyebrow">Career-Focused Learning</p>
+            <h1>Master Job-Oriented IT Courses</h1>
+            <p class="subtitle">
+              Practical, project-driven training designed for working professionals and
+              job seekers who want interview-ready skills.
+            </p>
+            <div class="hero-ctas">
+              <a href="#courses" class="btn btn-primary">Explore Courses</a>
+              <a
+                href="https://wa.me/917681858880?text=Hi%2C%20Please%20share%20course%20details"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-secondary"
+                >Instant WhatsApp Enquiry</a
+              >
+            </div>
+          </div>
+          <div class="hero-panel">
+            <h3>Why Learners Choose Us</h3>
+            <ul>
+              <li>Real project scenarios and guided assignments</li>
+              <li>Interview-focused coverage with mentor support</li>
+              <li>Recorded sessions for flexible learning anytime</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="courses" class="section courses">
+        <div class="container">
+          <div class="section-head">
+            <h2>Featured Courses</h2>
+            <p>Choose the right course and submit your enquiry in a few seconds.</p>
+          </div>
+          <div class="course-grid">
+            <% courses.forEach((course) => { %>
+            <article class="course-card">
+              <p class="course-tag">Job-Oriented Track</p>
+              <h3><%= course.name %></h3>
+              <p><%= course.description %></p>
+              <div class="card-footer">
+                <span class="price"><%= course.price %></span>
+                <div class="card-actions">
+                  <a class="btn btn-light" href="/syllabus/<%= course.id %>"
+                    >Download Syllabus</a
+                  >
+                  <button
+                    type="button"
+                    class="btn btn-primary enroll-btn"
+                    data-course="<%= course.name %>"
+                  >
+                    Enroll / Enquire Now
+                  </button>
+                </div>
+              </div>
+            </article>
+            <% }) %>
+          </div>
+        </div>
+      </section>
+
+      <section id="testimonials" class="section alt-bg">
+        <div class="container">
+          <div class="section-head">
+            <h2>Testimonials</h2>
+            <p>Feedback from learners who completed our job-oriented tracks.</p>
+          </div>
+          <div class="testimonial-grid">
+            <article class="quote-card">
+              <p>
+                "The SQL course gave me confidence for interviews. The real project
+                assignments were exactly what I needed."
+              </p>
+              <h4>Ritika M., Data Analyst</h4>
+            </article>
+            <article class="quote-card">
+              <p>
+                "Informatica Cloud concepts were explained with practical use cases.
+                I used the same patterns directly in my workplace."
+              </p>
+              <h4>Vikram S., ETL Developer</h4>
+            </article>
+            <article class="quote-card">
+              <p>
+                "The dbt workflow module helped me understand end-to-end modern data
+                transformations and testing."
+              </p>
+              <h4>Aditya R., Analytics Engineer</h4>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="faq" class="section">
+        <div class="container">
+          <div class="section-head">
+            <h2>Frequently Asked Questions</h2>
+          </div>
+          <div class="faq-list">
+            <details>
+              <summary>Are these courses suitable for beginners?</summary>
+              <p>
+                Yes. Each track starts with fundamentals and gradually moves to
+                advanced, interview-oriented practical topics.
+              </p>
+            </details>
+            <details>
+              <summary>Do you provide real-time project practice?</summary>
+              <p>
+                Yes. All three courses include hands-on assignments, real scenarios,
+                and guided workflows.
+              </p>
+            </details>
+            <details>
+              <summary>How do I enroll?</summary>
+              <p>
+                Click "Enroll / Enquire Now", complete the form, and our team will
+                contact you with batch details and next steps.
+              </p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="section contact">
+        <div class="container contact-grid">
+          <div>
+            <h2>Contact Us</h2>
+            <p>Have questions before enrolling? Reach out directly.</p>
+          </div>
+          <div class="contact-cards">
+            <a href="mailto:trusanaccademy@gmail.com">trusanaccademy@gmail.com</a>
+            <a
+              href="https://wa.me/917681858880?text=Hi%2C%20I%20need%20more%20details%20about%20courses"
+              target="_blank"
+              rel="noopener noreferrer"
+              >WhatsApp: +91-7681858880</a
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-wrap">
+        <a
+          href="https://wa.me/917681858880?text=Hi%2C%20I%20want%20course%20details"
+          target="_blank"
+          rel="noopener noreferrer"
+          >WhatsApp: +91-7681858880</a
+        >
+        <a href="mailto:trusanaccademy@gmail.com">Email</a>
+        <p>Copyright © <span id="year"></span> Trusan IT Academy</p>
+      </div>
+    </footer>
+
+    <button class="sticky-contact" onclick="location.href='#contact'">Contact Us</button>
+    <a
+      class="sticky-whatsapp"
+      href="https://wa.me/917681858880?text=Hi%2C%20I%20want%20to%20enquire"
+      target="_blank"
+      rel="noopener noreferrer"
+      >WA</a
+    >
+
+    <div class="modal" id="enquiryModal" aria-hidden="true">
+      <div class="modal-card">
+        <button class="close-btn" id="closeModal" aria-label="Close">×</button>
+        <h3>Course Enquiry Form</h3>
+        <form id="leadForm" novalidate>
+          <div class="form-grid">
+            <label>
+              Full Name
+              <input type="text" name="fullName" required />
+              <small class="error" data-error-for="fullName"></small>
+            </label>
+            <label>
+              Mobile Number
+              <input type="tel" name="mobileNumber" required />
+              <small class="error" data-error-for="mobileNumber"></small>
+            </label>
+            <label>
+              Email Address
+              <input type="email" name="emailAddress" required />
+              <small class="error" data-error-for="emailAddress"></small>
+            </label>
+            <label>
+              Current Experience
+              <input type="text" name="currentExperience" placeholder="e.g., 2 years" required />
+              <small class="error" data-error-for="currentExperience"></small>
+            </label>
+            <label class="full-width">
+              Interested Course
+              <input type="text" name="interestedCourse" required />
+              <small class="error" data-error-for="interestedCourse"></small>
+            </label>
+            <label class="full-width">
+              Message / Learning Goal
+              <textarea name="message" rows="4" required></textarea>
+              <small class="error" data-error-for="message"></small>
+            </label>
+          </div>
+          <button type="submit" class="btn btn-primary full-width">Submit Enquiry</button>
+          <p id="formStatus" class="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+
+    <script src="/js/main.js" defer></script>
+  </body>
+</html>

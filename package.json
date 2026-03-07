@@ -1,0 +1,25 @@
+{
+  "name": "it-course-leads-website",
+  "version": "1.0.0",
+  "description": "Modern course landing website with lead capture and admin dashboard",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "keywords": [
+    "courses",
+    "lead-generation",
+    "express",
+    "sqlite"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "helmet": "^8.0.0",
+    "nodemailer": "^6.10.0"
+  }
+}
